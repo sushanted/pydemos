@@ -65,7 +65,7 @@ def concat(*parts,sep="/"):
 print(concat("a","b","c"))
 print(concat("10","100","23","56",sep="."))
 
-#TODO : tuple and dictionary passing
+#TODO :  dictionary passing to a fucntion ** 4.7.3.4
 
 
 

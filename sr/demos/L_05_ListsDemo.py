@@ -3,6 +3,10 @@
 
 the_list = [0, 1, 2, 3, 4, 5]
 
+# in operator to check exists
+print("In:",1 in the_list)
+print("Not In:",7 not in the_list)
+
 print("list[2]=", the_list[2])
 
 # m to n including m excluding n
@@ -80,8 +84,50 @@ print("list.reverse()", the_list)
 the_list.sort()
 print("list.sort()", the_list)
 
+# Looping through list
+for i in the_list:
+    print("item=",i)
+# Similar to .index() on flux : enumerate returns an iterable of tuples where first item is the index
+for index,i in enumerate(the_list):
+    print(index,":",i)
 
+print("\nLooping through multiple sequences : ZIP \n")
+# Looping through multiple lists : zip, Note: extra items are ignored
+# Zip gives out a tuple
+print("Zipped list items: ")
+for i,a in zip([2,4,7],['a','g','n','p']):
+    print(i,a)
 
+print("Zipped list tuples: ")
+for t in zip([2,4,7],['a','g','n','p']):
+    print(t)
+
+# There could be different types of sequences : tuple, list, set
+print("Zipped tuple,list and set: ")
+for t,i,a in zip((2,3,4),[1,4,7],{'a','b','c'}):
+    print(t,i,a)
+
+# Enumerate the output tuples from zip
+print("Enumerated Zipped tuple,list and set tuples: ")
+for index,t in enumerate(zip((2,3,4),[1,4,7],{'a','b','c'})):
+    print(index,t)
+
+print("Enumerated Zipped tuple,list and set: ")
+for index,(t,i,a) in enumerate(zip((2,3,4),[1,4,7],{'a','b','c'})):
+    print(index,t, i,a)
+
+print("\nLooping order\n")
+print("Reversed: ")
+for i in reversed(range(0,5)):
+    print(i)
+
+print("Sorted: ")
+for i in sorted([4,5,2,5,9]):
+    print(i)
+
+print("Reversed sorted: ")
+for i in reversed(sorted(range(0,6))):
+    print(i)
 
 
 

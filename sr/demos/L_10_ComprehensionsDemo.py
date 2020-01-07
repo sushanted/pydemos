@@ -24,3 +24,7 @@ print("Squares",[x**2 for x in numbers]);
 print("Squares of evens",[x**2 for x in numbers if x%2==0]);
 
 #TODO : tuples and nested comprehensions
+
+#Set comprehensions
+print("Evens set:",{x//2 for x in range(0,10)})
+
