@@ -64,3 +64,15 @@ print("word[2:2000]=", word[2:2000])
 
 # length
 print("length", len(word))
+
+# formatting
+print("\nFormatting\n")
+name = 'Tom'
+age = 44.234
+
+# Variable interpolation
+print(f'{name} is {age} years old')
+
+# Logger kind format
+print("{} is {:1.4} years old".format(name, age))
+print("{1} is the  age of {0}".format(name, age))
