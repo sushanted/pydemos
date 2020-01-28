@@ -1,10 +1,12 @@
 list_one = [1, 2, 3]
 list_two = [1, 2, 3]
 
+print("Id of an object:", id(list_one))
+
 # Objects comparisions
-print("Equals:", list_one == list_two)
-print("Same:", list_one is list_two)
-print("Not Same:", list_one is not list_two)
+print("Equals:", list_one == list_two)  # True
+print("Same:", list_one is list_two)  # False
+print("Not Same:", list_one is not list_two)  # True
 
 # Contains
 print("In:", 1 in list_one)
@@ -18,7 +20,7 @@ print("3 < 4 == 4", 3 < 4 == 4)
 print("3 < 4 == 5", 3 < 4 == 5)
 print("5 < 4 == 4", 5 < 4 == 4)
 
-if (3 == 3 and (4 > 2 or 6 < 2)):
+if 3 == 3 and (4 > 2 or 6 < 2):
     print(True)
 
 # Assignment inside expressions : use walrus operator ":="
@@ -26,7 +28,7 @@ b = (a := 4)
 print(a, b)
 
 a = 5
-while ((a := a - 1) > 0):
+while (a := a - 1) > 0:
     print(a)
 
 # Comparing types:

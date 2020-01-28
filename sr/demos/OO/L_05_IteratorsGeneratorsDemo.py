@@ -7,16 +7,16 @@ for ch in "string":
     print(ch)
 
 print("Accessing items using for loop:")
-for item in (1, 3, 4):
+for item in [1, 3, 4]:
     print(item)
 
 # Behind the scene:
-iterator = (1, 3, 4).__iter__()
+iterator = iter([1, 3, 4]) # This is like calling [1,3,4].__iter__
 print("Accessing items using raw iterator (this is what for loop does behind the scene)")
 done = False
 while (not done):
     try:
-        print(iterator.__next__())
+        print(next(iterator)) # This is like calling iterator.__next__
     except StopIteration:
         done = True
 

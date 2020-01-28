@@ -36,3 +36,20 @@ for i in simple_tuple:
 # Similar to .index() on flux : enumerate returns an iterable of tuples where first item is the index
 for index, i in enumerate(simple_tuple):
     print(index, ":", i)
+
+
+def concatenate(a, b, c):
+    return f"{a}:{b}:{c}"
+
+
+# Unpack a tuple just like list
+print(concatenate(*simple_tuple))
+
+# Transposing a list of tuples
+original_tuple = (('a','b','c','d'),(1,2,3,4))
+
+# * passes unpacked list to zip, zip will get two arguments: ('a','b','c','d'),(1,2,3,4) , which are tuples
+# Now zip will pick elements one by one from each input tuple to create pairs of tuples
+# list again creates list from the items provided by the zip
+# * now unpacks the list into a tuples
+print("Transposed tuples:",*list(zip(*original_tuple))) #('a', 1) ('b', 2) ('c', 3) ('d', 4)

@@ -1,11 +1,16 @@
 # if else if
-number = input("Enter number:")
+number = int(input("Enter number:"))
 if number == 1:
     print("one")
 elif number == 2:
     print("two")
 else:
     print("more than two")
+
+# Ternary operator equivalent statement : number % 2 == 1 ? "odd":"even"
+
+number_type = "odd" if number % 2 == 1 else "even"
+print("The entered number is: ", number_type)
 
 # for
 for c in "word":

@@ -74,5 +74,15 @@ age = 44.234
 print(f'{name} is {age} years old')
 
 # Logger kind format
-print("{} is {:1.4} years old".format(name, age))
+print("{} is {:8.4} years old".format(name, age))  # 8 chars with spaces, total 4 digits
 print("{1} is the  age of {0}".format(name, age))
+
+# String modulo operator: this is like printf but it is an operation in string and not related to the print function
+print("number %9.3f" % (3.42))  # 9 chars including spaces, 3 digits
+print("number %2.3f" % (123.42395))  # 9 chars including spaces, 3 digits
+
+# 0: padd the value with 0 #: print the 0x, x:convert it to hex, 9: print 7 chars including zeros(or spaces) before
+print("number in hex %0#9x" % 345)  # 0x0000159
+
+# Separate values with a space and append full stop after the last value.
+print("A", "simple", "sentence", sep=' ', end='.')

@@ -24,8 +24,24 @@ print("list[-1]=", the_list[-1])
 # from last-m till last -n including last-m, excluding last-n
 print("list[-3:-1]=", the_list[-3:-1])
 
-# concatenation
+# 1 till 6 step 2
+print("list[1:6:2]=", the_list[1:6:2])
+
+# Even elements : with step 2
+print("list[::2]=", the_list[::2])
+
+# Odd elements : with step 2
+print("list[1::2]=", the_list[1::2])
+
+# concatenation : this creates a new list
 print("list+[6,7]+[8]=", the_list + [6, 7] + [8])
+
+# extend a list
+the_list += [6, 7]
+print("list+=[6,7]:", the_list)
+
+# multiply a list:
+print("[1,2]*3=", [1, 2] * 3)
 
 print("\nMutations\n")
 
@@ -39,6 +55,14 @@ print(the_list)
 
 the_list.append(10)
 print("after append:", the_list)
+
+# Extending with another list
+the_list.extend([11, 12, 13])
+# Extending with a set
+the_list.extend({14, 15})
+# Extending with a tuple
+the_list.extend((16, 17, 18))
+print("after extend:", the_list)
 
 # make the slice empty
 the_list[4:] = []

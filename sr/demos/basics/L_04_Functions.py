@@ -80,4 +80,11 @@ def concat(*parts, sep="/"):
 print(concat("a", "b", "c"))
 print(concat("10", "100", "23", "56", sep="."))
 
-# TODO :  dictionary passing to a fucntion ** 4.7.3.4
+
+def consume_keyword_args(non_keyword, **dictionary):
+    print("non_keyword:", non_keyword)
+    print("dictionary:", dictionary)
+
+
+# Pass key value pairs, all not matching params are passed to the dictionary arg
+consume_keyword_args(a=1, b=2, non_keyword=10, c=3)
