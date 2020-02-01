@@ -88,3 +88,25 @@ def consume_keyword_args(non_keyword, **dictionary):
 
 # Pass key value pairs, all not matching params are passed to the dictionary arg
 consume_keyword_args(a=1, b=2, non_keyword=10, c=3)
+
+print("\nFunction namespace and inner instances:\n")
+
+
+def outer(value):
+    # For every call for the outer function a new inner function is defined
+    def inner():
+        pass
+
+    # Values can be defined in the namespace of the function
+    # This value would be different for each returned function reference
+    inner.value = value
+    return inner
+
+
+first_call_result = outer(1)
+second_call_result = outer(2)
+
+# Every time a new instance of inner function is returned
+print(id(first_call_result), id(second_call_result))
+print("Are the inner functions same? ", first_call_result == second_call_result)
+print(first_call_result.value, second_call_result.value)
