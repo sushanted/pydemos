@@ -1,4 +1,5 @@
 # Keys are always immutable objects, e.g. lists are not allowed
+# OR the objects which implement __eq__ and __hash__ properly are allowed to be keys in dictionaries
 
 # Simple : JSON style
 
