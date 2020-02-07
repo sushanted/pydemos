@@ -71,3 +71,19 @@ for i in range(0, 10):
 # Python needs this because it is indentation based : effectively it is empty curly braces
 for i in range(1, 4):
     pass
+
+
+# Another example of else of a for loop (Needs a forward reference of Functions chapter):
+def factorize(number):
+    print("Computing factors of:", number)
+    for factor in range(2, (number // 2) + 2):
+        if number % factor == 0:
+            return [factor] + factorize(number // factor)
+    else:
+        if number == 1:
+            return []
+        # No factor could break the number, i.e. it is the prime number
+        return [number]
+
+
+print("Factors of 16:", factorize(16))

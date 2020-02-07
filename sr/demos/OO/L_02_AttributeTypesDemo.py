@@ -10,10 +10,11 @@ class UnitValue:
         self.unit = unit
 
     def print(self):
-        # Accessing fields using 'self'
-        # Note: static fields can be accessed through self or using className
-        # If a field with the same name as a static field is defined (using self.static_field), the non-static
-        # field gets priority (it hides the static field) for that particular object instance.
+        # Accessing attributes using 'self'
+        # Note: class attributes can be accessed through self or using className
+        # If an attribute with the same name as a class attribute is defined (using self.attribute), the non-class
+        # attribute gets priority (it hides the class attribute) for that particular object instance.
+        # The namespaces for class and instance attributes are different, but the instance namespace inherits class namespace
         print(f"{self.value}{self.unit_value_delimiter}{self.unit}")
 
     def change_delimiter(self, new_delimiter):

@@ -1,4 +1,17 @@
-# Note : there are no private variables in python
+import math
+
+print("\nEverything is an object, even primitives\n")
+
+print(type(True))
+print(type(5))
+print(type('str'))
+print(type(['x']))
+
+def fun(): pass
+
+print(type(fun)) # class: function
+
+print(type(math)) # class: module
 
 print("\nSimple class definition\n")
 
@@ -57,6 +70,9 @@ instance_print = unit_value_object.print
 print("Object print function")
 instance_print()
 
+print("Get class object from an instance using type")
+type(unit_value_object).print(unit_value_object)
+
 # Way to obtain the function object from method object (can be used to operate on another instance)
 function_object = instance_print.__func__
 function_object(unit_value_object)
@@ -74,6 +90,7 @@ unit_value_object.type = "scalar"
 print(unit_value_object.type)
 
 
+
 def uv_print(self):
     print(f"{self.value}{self.unit_value_delimiter}{self.unit}({self.type})")
 
@@ -82,6 +99,14 @@ def uv_print(self):
 UnitValue.uv_print = uv_print
 unit_value_object.uv_print()
 
+print("\ngetattr and setattr:\n")
+
+# Generically get attribute or default value
+print(getattr(unit_value_object,"type",None))
+print(getattr(unit_value_object,"undefined_attribute","default value"))
+setattr(unit_value_object,"new_attr",5)
+print(getattr(unit_value_object,"new_attr",-1))
 
 
 print("Class of the object: ", unit_value_object.__class__)
+

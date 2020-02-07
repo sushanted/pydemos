@@ -22,7 +22,7 @@ while (not done):
 
 print("\nCustom iterator implementation :\n")
 
-
+# NEVER do this in Python : there are better ways with Generators: refere next chapter
 class Squares:
     def __init__(self, upto):
         self.upto = upto
@@ -50,50 +50,3 @@ for i in Squares(5):
 print("Squares upto 101:")
 for i in Squares(101):
     print(i)
-
-print("\nGenerator:\n")
-
-
-# With generators there is no need to write iterators methods : __next__ , no need to maintain interim state,
-# and no need to check the end of iteration and raise StopIteration
-def reverse_squares():
-    for i in range(10, 0, -1):
-        # yield should always be in a function
-        yield i * i
-
-
-print("Reversed squares")
-for i in reverse_squares():
-    print(i)
-
-
-# Same example as that of iterator (without state maintenance)
-def squares(upto):
-    last_square_number = 0
-    current_difference = 1
-    while (last_square_number + current_difference) < upto:
-        last_square_number = last_square_number + current_difference
-        current_difference = current_difference + 2
-        yield last_square_number
-
-
-print("Squares upto 101")
-for i in squares(101):
-    print(i)
-
-print("\nGenerator expressions:\n")
-# This are similar to list comprehensions, but don't create and intermediate list, but directly an iterable (saving on memory)
-
-# Comprehension
-print("Sum of first 10 numbers:", sum([i for i in range(1, 11)]))
-# Equivalent Generator expression
-print("Sum of first 10 numbers:", sum(i for i in range(1, 11)))
-
-# Similar example as that of function based generator now using generator expression
-number_of_squares_to_generate = 10
-last_square_number = 0
-print(*(last_square_number := last_square_number + current_difference for current_difference in
-        range(1, number_of_squares_to_generate * 2, 2)))
-
-# Note 1: := is walrus operator : assignment inside an expression
-# Note 2: *iterable : unpacks the iterable into the evaluated values
