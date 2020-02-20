@@ -32,7 +32,7 @@ simple_class_object = SimpleClass()
 # calling method
 simple_class_object.hello()
 
-print("\nClass with constructor\n")
+print("\nClass with constructor and destructor\n")
 
 
 class UnitValue:
@@ -48,6 +48,10 @@ class UnitValue:
     def print(self):
         print(f"{self.value}{UnitValue.unit_value_delimiter}{self.unit}")
 
+    # This is called if object is explicitly deleted with del or at the end of the scope
+    def __del__(self):
+        print("Destroyed UnitValue")
+
     # methods must have first arg as self else it doesn't compile
     # def static():
     # pass
@@ -59,6 +63,18 @@ print("Value:", unit_value_object.value)
 unit_value_object.value = 9
 # calling methods
 unit_value_object.print()
+
+# deleting
+uvo = UnitValue(3,"mb")
+print("Trying to destroy...")
+del uvo
+
+def use_uv():
+    uvo = UnitValue(3, "mb")
+
+print("Using uv")
+use_uv()
+print("Use over, uv already have been destroyed")
 
 # Needs an object as a param (compare with UnitValue::print in java)
 generic_print = UnitValue.print

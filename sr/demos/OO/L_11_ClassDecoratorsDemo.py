@@ -72,3 +72,51 @@ def power4(value):
 
 print(cube(5))
 print(power4(2))
+
+
+# Decorating a class
+class StrAdder():
+
+    def to_string(object):
+        to_string = ""
+        for key, value in object.__dict__.items():
+            to_string += str(key) + " : " + str(value) + "\n"
+
+        return to_string
+
+    def __init__(self, cls):
+        print("Decorating class: " + str(cls))
+        self.cls = cls
+        # add __str__ method dynamically to the passed class
+        cls.__str__ = type(self).to_string
+
+    def __call__(self, *args, **kwargs):
+        # Create an instance of cls class
+        return self.cls(*args, **kwargs)
+
+# Decoration : PersonalInfo = StrAdder(PersonalInfo)
+# Now while creating an instance of PersonalInfo, PersonalInfo(name,age) will be called,
+# i.e. StrAdder(PersonalInfo)(name,age) will be called
+#
+@StrAdder
+class PersonalInfo:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+@StrAdder
+class Student:
+    def __init__(self, clazz, marks, personalInfo):
+        self.clazz = clazz
+        self.marks = marks
+        self.personalInfo = personalInfo
+
+
+pi = PersonalInfo("Deepak", 45)
+
+print(str(pi))
+
+student = Student("second", 34, pi)
+
+print(str(student))

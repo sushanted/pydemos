@@ -42,7 +42,7 @@ class Square(Rectangle):
 
     def area(self, side):
         # Calling overridden method, like super.area(side,side)
-        return Rectangle.area(self, side, side)
+        return super().area(side, side)
 
 
 square = Square()
@@ -63,7 +63,7 @@ class Sqr(Rect):
 
     def __init__(self, side):
         # This is kind of super(side,side) in java
-        Rect.__init__(self, side, side)
+        super().__init__(side, side)
 
 
 sqr = Sqr(5)
@@ -72,49 +72,60 @@ print("Area of square:", sqr.area())
 
 print("\nMultiple inheritance\n")
 
+print("\nClass methods and inheritance:")
 
-# Classic diamond hierarchy
-class Top:
-    def print(self):
-        print("center")
+# class method is not instance specific. but it gets the class for which it has been called
 
-    def top_print(self):
-        print("center_print")
+class Shape():
+    _number_of_edges = 0
 
+    def get_number_of_edges_using_instance(self):
+        return self._number_of_edges
 
-class Left(Top):
-    def print(self):
-        Top.print(self)
-        print("left")
+    # This is statically accessing the value defined in the Shape class, using 'Shape'
+    # It has no idea from which class this method has been called
+    @staticmethod
+    def get_number_of_edges_static_method():
+        return Shape._number_of_edges
 
-    def left_print(self):
-        print("left_print")
-
-
-class Right(Top):
-    def print(self):
-        Top.print(self)
-        print("right")
-
-    def right_print(self):
-        print("right_print")
+    # The calling class is passed to a class method
+    @classmethod
+    def get_number_of_edges_class_method(cls):
+        return cls._number_of_edges
 
 
-class BottomLR(Left, Right):
+class Circle(Shape):
     pass
 
 
-class BottomRL(Right, Left):
-    pass
+class Triangle(Shape):
+    _number_of_edges = 3
 
 
-for cls in (BottomLR, BottomRL):
-    ob = cls()
-    print(f"For class: {ob.__class__} with inheritance order: {ob.__class__.__bases__}")
-    # The print method is found bottom to top, left to right manner
-    # The output depends on the class for LR Left.print is found first, for RL Right.print is found first
-    ob.print()
-    # All inherited methods are available
-    ob.top_print()
-    ob.left_print()
-    ob.right_print()
+class Hexagon(Shape):
+    _number_of_edges = 6
+
+
+all_shapes = [Shape, Circle, Triangle, Hexagon]
+
+# Works fine, but problem is : we need to create an instance of each class just to know the number of edges,
+# which would be same for any given type of shape.
+print("\nInstance method override:")
+for shape in all_shapes:
+    print(f"{shape.__name__} edges: ", shape().get_number_of_edges_using_instance())
+
+# We can call the method using class-names
+# Problem is : it prints 0 for any shape
+# The static method has no idea from which class this method has been called
+print("\nStatic method override:")
+for shape in all_shapes:
+    print(f"{shape.__name__} edges: ", shape.get_number_of_edges_static_method())
+
+# Problem is : it prints 0 for any shape
+# The static method has no idea from which class this method has been called
+print("\nClass method override:")
+for shape in all_shapes:
+    print(f"{shape.__name__} edges: ", shape.get_number_of_edges_class_method())
+
+
+# Another usage of a class method is __new__ : it will be demoed in MetaClasses Lesson

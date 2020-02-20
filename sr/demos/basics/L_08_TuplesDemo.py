@@ -53,3 +53,9 @@ original_tuple = (('a','b','c','d'),(1,2,3,4))
 # list again creates list from the items provided by the zip
 # * now unpacks the list into a tuples
 print("Transposed tuples:",*list(zip(*original_tuple))) #('a', 1) ('b', 2) ('c', 3) ('d', 4)
+
+
+t1 = (1,2)
+t2 = (3,4)
+# Creates a new immutable tuple as concatenation of two tuples
+print(t1+t2)
