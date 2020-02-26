@@ -29,6 +29,20 @@ class CSV(str):
     def __invert__(self):
         return CSV(",".join(reversed(self.split(","))))
 
+    # Overloading [] operator for 3 variants
+    # [n] item at nth index
+    # [m:n] items from m to n (excluding n)
+    # [a,b,c] items at index a,b and c
+    def __getitem__(self, item):
+        split_values = self.split(",")
+        if isinstance(item, int):
+            return CSV(split_values[item])
+        elif isinstance(item, tuple):
+            return CSV(",".join((split_values[i] for i in item)))
+        elif isinstance(item, slice):
+            return CSV(",".join(split_values[item]))
+        raise ValueError(f"Invalid item type {type(item)}")
+
 
 csv1 = CSV("one")
 csv2 = CSV("two")
@@ -59,3 +73,13 @@ print("\ncsv4 = CSV(4)\ncsv4 += 5\ncsv4 += 6\ncsv4 : ", csv4)
 print("\nComplex operations:")
 print("\n~(CSV(0)+1+2+3) : ", ~(CSV(0) + 1 + 2 + 3))
 print("\n~(1+2+CSV(4)+5)+2+1+0 : ", ~(1 + 2 + CSV(4) + 5) + 2 + 1 + 0)
+
+print("\n Index/slice operator overloading:")
+
+romanCSV = CSV(".,I,II,III,IV,V,VI,VII,VIII,IX,X")
+
+print("romanCSV : ", romanCSV)
+
+print("romanCSV[4] : ", romanCSV[4])
+print("romanCSV[3,5,7] : ", romanCSV[3, 5, 7])
+print("romanCSV[4:7] : ", romanCSV[4:7])

@@ -91,7 +91,7 @@ class StrAdder():
         cls.__str__ = type(self).to_string
 
     def __call__(self, *args, **kwargs):
-        # Create an instance of cls class
+        # Create an instance of cls class and return
         return self.cls(*args, **kwargs)
 
 # Decoration : PersonalInfo = StrAdder(PersonalInfo)
