@@ -18,7 +18,7 @@ print("old\\tline\\nnew\\tline")
 # Useful with regex
 print(r"old\tline\nnew\tline\"quoted\"")
 
-# multiline
+# multi-line
 print(""" This can span
 MANY
 multiple lines""")
