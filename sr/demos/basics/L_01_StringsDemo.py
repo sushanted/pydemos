@@ -15,6 +15,7 @@ print("old\tline\nnew\tline\"quoted\"")
 print("old\\tline\\nnew\\tline")
 
 # r : raw text : \ has no special meaning : printed as is : even the escape is also printed
+# Useful with regex
 print(r"old\tline\nnew\tline\"quoted\"")
 
 # multiline
