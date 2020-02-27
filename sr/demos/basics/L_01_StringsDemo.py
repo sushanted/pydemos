@@ -23,7 +23,7 @@ print(""" This can span
 MANY
 multiple lines""")
 
-# multiline string : escaped newline characters
+# multi-line string : escaped newline characters
 print(""" This can span \
 MANY \
 multiple lines""")
