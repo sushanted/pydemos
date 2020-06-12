@@ -1,6 +1,9 @@
 # slicing gives a new copy of the list
 # lists are mutable
 
+empty_list = list()
+print(empty_list)
+
 the_list = [0, 1, 2, 3, 4, 5]
 
 # in operator to check exists
@@ -42,6 +45,8 @@ print("list+=[6,7]:", the_list)
 
 # multiply a list:
 print("[1,2]*3=", [1, 2] * 3)
+
+print("[[1,2]]*3=", [[1, 2]] * 3)
 
 print("\nMutations\n")
 
@@ -152,3 +157,13 @@ for i in sorted([4, 5, 2, 5, 9]):
 print("Reversed sorted: ")
 for i in reversed(sorted(range(0, 6))):
     print(i)
+
+the_list = [4,1,2,3,23,30,12]
+the_list.sort() # Mutates the list
+print(f"Sorted list:{the_list}")
+the_list.sort(key= lambda x : -x)
+print(f"Reverse Sorted list:{the_list}")
+the_list.sort(key= lambda x : str(x))
+print(f"Alphabetically Sorted list:{the_list}")
+
+

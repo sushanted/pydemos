@@ -87,3 +87,6 @@ print("number in hex %0#9x" % 345)  # 0x0000159
 
 # Separate values with a space and append full stop after the last value.
 print("A", "simple", "sentence", sep=' ', end='.')
+
+# Partitioning strings
+print("this is simple".rpartition(' '))

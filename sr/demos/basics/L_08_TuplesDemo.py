@@ -59,3 +59,25 @@ t1 = (1,2)
 t2 = (3,4)
 # Creates a new immutable tuple as concatenation of two tuples
 print(t1+t2)
+
+
+# convert iterables into tuple
+a,b,c = tuple([i for i in range(3)])
+print(a,b,c)
+
+# this is more simple, direct assign an array of length n to n variable tuple
+a,b,c = [i for i in range(3)]
+print(a,b,c)
+
+# multiple iterables (a list a set and a tuple) into multiple tuples
+(a,b,c),(d,e,),(f,g,h) = [3,4,5],{6,7},(8,9,10)
+print(a,b,c,d,e,f,g,h)
+
+# iterable to tuple : tuple including a catch-all element
+start,*values,end = range(10)
+print(f"from {start} to {end}, values: {values}")
+
+# An interesting example : converting an iterable into a list
+# Note that the list is part of the tuple on LHS
+*the_list, = (1,2,3)
+print(the_list)
